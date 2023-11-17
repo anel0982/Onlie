@@ -1,0 +1,842 @@
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/anel0982/Orion/main/Hhhbhbbbtest')))()
+local Window = OrionLib:MakeWindow({Name = "Uriel Hub™| blade ball", HidePremium = false, IntroText = "Uriel Hub™", IntroEnabled = true, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Main = Window:MakeTab({
+	Name = "Home",
+	Icon = "rbxassetid://7733960981",
+	PremiumOnly = false
+})
+
+local Section = Main:AddSection({
+	Name = "Main"
+})
+
+OrionLib:MakeNotification({
+	Name = "Thank for use script",
+	Content = "Script by Uriel",
+	Image = "rbxassetid://4483345998",
+	Time = 4
+})
+
+Main:AddButton({
+	Name = "Auto Parry",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/Refinement/main/MC%3ABlade%20Ball%20Parry%20V4.0.0",true))()
+       end
+})
+
+Main:AddButton({
+	Name = "Auto Spam",
+	Callback = function()
+    local gui = Instance.new("ScreenGui")
+gui.ResetOnSpawn = false 
+gui.Parent = game.CoreGui 
+
+local frame = Instance.new("Frame")
+frame.Position = UDim2.new(0, 50, 0, 10)
+frame.Size = UDim2.new(0, 100, 0, 75)
+frame.BackgroundColor3 = Color3.new(0, 0, 0)
+frame.BorderSizePixel = 0
+frame.Parent = gui
+
+local button = Instance.new("TextButton")
+button.Text = "off spam"
+button.Size = UDim2.new(1, -10, 1, -20)
+button.Position = UDim2.new(0, 10, 0, 10)
+button.BackgroundColor3 = Color3.new(1, 1, 1)
+button.BorderColor3 = Color3.new(0, 0, 0)
+button.BorderSizePixel = 2
+button.Font = Enum.Font.SourceSans
+button.TextColor3 = Color3.new(0, 0, 0)
+button.TextSize = 16
+button.Parent = frame
+
+local activated = true
+
+local function toggle()
+    activated = not activated
+    button.Text = activated and "on spam" or "off spam"
+    
+    while activated do
+        local args = {
+            [1] = 1.4,
+            [2] = CFrame.new(-254.2939910888672, 112.13581848144531, -119.27256774902344) * CFrame.Angles(-2.029526710510254, 0.5662040710449219, 2.314905881881714),
+            [3] = {
+                ["2617721424"] = Vector3.new(-273.400146484375, -724.8031005859375, -20.92414093017578),
+                
+            },
+            [4] = {
+                [1] = 910,
+                [2] = 154
+            }
+        }
+
+        game:GetService("ReplicatedStorage").Remotes.ParryAttempt:FireServer(unpack(args))
+        game:GetService("RunService").Heartbeat:Wait()
+    end
+end
+
+button.MouseButton1Click:Connect(toggle)
+  	end    
+})
+
+Main:AddButton({
+	Name = "Hold block to spam",
+	Callback = function()
+             game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Script by Uriel Hub",
+    Text = "Hold Block button to Spam",
+    Duration = 5
+})
+
+getgenv().SpamSpeed = 5 -- 1-25
+
+if not getgenv().exeSpam then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/Refinement/main/MC%3ABlade%20Ball%20Spam", true))()
+end
+
+getgenv().exeSpam = true
+  	end    
+})
+
+Main:AddToggle({
+	Name = "300 walkspeed",
+	Default = false,
+	Callback = function(Value)
+       if Value then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 300
+        else
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+        end
+	end    
+})
+
+Main:AddToggle({
+	Name = "600 walkspeed",
+	Default = false,
+	Callback = function(Value)
+       if Value then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 600
+        else
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+        end
+	end    
+})
+
+local Shop = Window:MakeTab({
+	Name = "Shop",
+	Icon = "rbxassetid://7734056813",
+	PremiumOnly = false
+})
+
+local Section = Shop:AddSection({
+	Name = "Abilities(auto get the skills you already have)"
+})
+
+Shop:AddButton({
+	Name = "Dash",
+	Callback = function()
+      local args = {
+    [1] = "Dash"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+
+    local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Dash" --Change to Use other ability
+
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+Shop:AddButton({
+	Name = "Forcefield",
+	Callback = function()
+      local args = {
+    [1] = "Forcefield"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+            
+local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Forcefield" --Change to Use other ability
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+Shop:AddButton({
+	Name = "Invisibility",
+	Callback = function()
+      local args = {
+    [1] = "Invisibility"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+            
+local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Invisibility" --Change to Use other ability
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+Shop:AddButton({
+	Name = "Platform",
+	Callback = function()
+      local args = {
+    [1] = "Platform"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+            
+local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Platform" --Change to Use other ability
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+Shop:AddButton({
+	Name = "Raging",
+	Callback = function()
+      local args = {
+    [1] = "Raging Deflection"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+            
+local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Raging Deflection" --Change to Use other ability
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+Shop:AddButton({
+	Name = "Shadow Step",
+	Callback = function()
+   local args = {
+    [1] = "Shadow Step"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+            
+local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Shadow Step" --Change to Use other ability
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+Shop:AddButton({
+	Name = "Super jump",
+	Callback = function()
+      local args = {
+    [1] = "Super Jump"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+            
+local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Super Jump" --Change to Use other ability
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+Shop:AddButton({
+	Name = "Telekinesis",
+	Callback = function()
+      	local args = {
+    [1] = "Telekinesis"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+            
+local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Telekinesis" --Change to Use other ability
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+Shop:AddButton({
+	Name = "Thunder Dash",
+	Callback = function()
+      local args = {
+    [1] = "Thunder Dash"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+            
+local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Thunder Dash" --Change to Use other ability
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+Shop:AddButton({
+	Name = "Rapture",
+	Callback = function()
+      		local args = {
+    [1] = "Rapture"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Store.RequestEquipAbility:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage").Remotes.Store.GetOwnedAbilities:InvokeServer()
+
+game:GetService("ReplicatedStorage").Remotes.kebaind:FireServer()
+            
+local function AbilityValue2()
+local TruValue = Instance.new("StringValue")
+workspace:FindFirstChild("AbilityThingyk1212"):Remove()
+        TruValue.Parent = game:GetService("Workspace")
+        TruValue.Name = "AbilityThingyk1212"
+        TruValue.Value = "Rapture" --Change to Use other ability
+end
+
+for i,v in pairs(abilitiesFolder:GetChildren()) do
+
+
+for i,b in pairs(abilitiesFolder:GetChildren()) do
+    local Ability = b
+    
+    if v.Enabled == true then
+        local EquippedAbility = v
+        local ChosenAbility = {}
+        spawn(function()
+        ChosenAbility = AbilityValue2()
+    end)
+
+    task.wait(0.05)
+        local AbilityValue = workspace.AbilityThingyk1212
+        if b.Name == AbilityValue.Value then
+
+            v.Enabled = false
+            b.Enabled = true
+    end
+end
+end
+end
+  	end    
+})
+
+local Misc = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://8997386997",
+	PremiumOnly = false
+})
+
+local Section = Misc:AddSection({
+	Name = "Misc"
+})
+
+Misc:AddButton({
+	Name = "Noclip",
+	Callback = function()
+local Noclip = nil
+local Clip = nil
+ 
+function noclip()
+ Clip = false
+ local function Nocl()
+  if Clip == false and game.Players.LocalPlayer.Character ~= nil then
+   for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+    if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+     v.CanCollide = false
+    end
+   end
+  end
+  wait(0.21) -- basic optimization
+ end
+ Noclip = game:GetService('RunService').Stepped:Connect(Nocl)
+end
+ 
+function clip()
+ if Noclip then Noclip:Disconnect() end
+ Clip = true
+end
+ 
+noclip() -- to toggle noclip() and clip()
+	end    
+})
+
+Misc:AddButton({
+	Name = "Esp player",
+	Callback = function()
+_G.FriendColor = Color3.fromRGB(0, 0, 255)
+_G.EnemyColor = Color3.fromRGB(255, 0, 0)
+_G.UseTeamColor = true
+
+--------------------------------------------------------------------
+local Holder = Instance.new("Folder", game.CoreGui)
+Holder.Name = "ESP"
+
+local Box = Instance.new("BoxHandleAdornment")
+Box.Name = "nilBox"
+Box.Size = Vector3.new(1, 2, 1)
+Box.Color3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Box.Transparency = 0.7
+Box.ZIndex = 0
+Box.AlwaysOnTop = false
+Box.Visible = false
+
+local NameTag = Instance.new("BillboardGui")
+NameTag.Name = "nilNameTag"
+NameTag.Enabled = false
+NameTag.Size = UDim2.new(0, 200, 0, 50)
+NameTag.AlwaysOnTop = true
+NameTag.StudsOffset = Vector3.new(0, 1.8, 0)
+local Tag = Instance.new("TextLabel", NameTag)
+Tag.Name = "Tag"
+Tag.BackgroundTransparency = 1
+Tag.Position = UDim2.new(0, -50, 0, 0)
+Tag.Size = UDim2.new(0, 300, 0, 20)
+Tag.TextSize = 15
+Tag.TextColor3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Tag.TextStrokeColor3 = Color3.new(0 / 255, 0 / 255, 0 / 255)
+Tag.TextStrokeTransparency = 0.4
+Tag.Text = "nil"
+Tag.Font = Enum.Font.SourceSansBold
+Tag.TextScaled = false
+
+local LoadCharacter = function(v)
+	repeat wait() until v.Character ~= nil
+	v.Character:WaitForChild("Humanoid")
+	local vHolder = Holder:FindFirstChild(v.Name)
+	vHolder:ClearAllChildren()
+	local b = Box:Clone()
+	b.Name = v.Name .. "Box"
+	b.Adornee = v.Character
+	b.Parent = vHolder
+	local t = NameTag:Clone()
+	t.Name = v.Name .. "NameTag"
+	t.Enabled = true
+	t.Parent = vHolder
+	t.Adornee = v.Character:WaitForChild("Head", 5)
+	if not t.Adornee then
+		return UnloadCharacter(v)
+	end
+	t.Tag.Text = v.Name
+	b.Color3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	t.Tag.TextColor3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	local Update
+	local UpdateNameTag = function()
+		if not pcall(function()
+			v.Character.Humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+			local maxh = math.floor(v.Character.Humanoid.MaxHealth)
+			local h = math.floor(v.Character.Humanoid.Health)
+		end) then
+			Update:Disconnect()
+		end
+	end
+	UpdateNameTag()
+	Update = v.Character.Humanoid.Changed:Connect(UpdateNameTag)
+end
+
+local UnloadCharacter = function(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder and (vHolder:FindFirstChild(v.Name .. "Box") ~= nil or vHolder:FindFirstChild(v.Name .. "NameTag") ~= nil) then
+		vHolder:ClearAllChildren()
+	end
+end
+
+local LoadPlayer = function(v)
+	local vHolder = Instance.new("Folder", Holder)
+	vHolder.Name = v.Name
+	v.CharacterAdded:Connect(function()
+		pcall(LoadCharacter, v)
+	end)
+	v.CharacterRemoving:Connect(function()
+		pcall(UnloadCharacter, v)
+	end)
+	v.Changed:Connect(function(prop)
+		if prop == "TeamColor" then
+			UnloadCharacter(v)
+			wait()
+			LoadCharacter(v)
+		end
+	end)
+	LoadCharacter(v)
+end
+
+local UnloadPlayer = function(v)
+	UnloadCharacter(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder then
+		vHolder:Destroy()
+	end
+end
+
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+	spawn(function() pcall(LoadPlayer, v) end)
+end
+
+game:GetService("Players").PlayerAdded:Connect(function(v)
+	pcall(LoadPlayer, v)
+end)
+
+game:GetService("Players").PlayerRemoving:Connect(function(v)
+	pcall(UnloadPlayer, v)
+end)
+
+game:GetService("Players").LocalPlayer.NameDisplayDistance = 0
+
+if _G.Reantheajfdfjdgs then
+    return
+end
+
+_G.Reantheajfdfjdgs = ":suifayhgvsdghfsfkajewfrhk321rk213kjrgkhj432rj34f67df"
+
+local players = game:GetService("Players")
+local plr = players.LocalPlayer
+
+function esp(target, color)
+    if target.Character then
+        if not target.Character:FindFirstChild("GetReal") then
+            local highlight = Instance.new("Highlight")
+            highlight.RobloxLocked = true
+            highlight.Name = "GetReal"
+            highlight.Adornee = target.Character
+            highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            highlight.FillColor = color
+            highlight.Parent = target.Character
+        else
+            target.Character.GetReal.FillColor = color
+        end
+    end
+end
+
+while task.wait() do
+    for i, v in pairs(players:GetPlayers()) do
+        if v ~= plr then
+            esp(v, _G.UseTeamColor and v.TeamColor.Color or ((plr.TeamColor == v.TeamColor) and _G.FriendColor or _G.EnemyColor))
+        end
+    end
+end
+  	end    
+})
+
+Misc:AddButton({
+	Name = "Fly",
+	Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/anel0982/Fly/main/Fly"))()
+	end    
+})
+
+Misc:AddButton({
+	Name = "inf jump",
+	Callback = function()
+    local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:connect(function()
+            if InfiniteJumpEnabled then
+                game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+            end
+        end)
+	end    
+})
+
+local Credit = Window:MakeTab({
+	Name = "Credit",
+	Icon = "rbxassetid://7733658133",
+	PremiumOnly = false
+})
+
+local Section = Credit:AddSection({
+	Name = "credit"
+})
+
+Credit:AddLabel("Credit by Uriel")
+Credit:AddLabel("Script made in Vietnamese")
+Credit:AddLabel("https://discord.gg/ZGuaAArT6H")
+Credit:AddLabel("Thank for use script")
+Credit:AddLabel("Auto parry by hosvile")
+
+
+
+
+
